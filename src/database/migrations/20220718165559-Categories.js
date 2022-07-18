@@ -24,6 +24,10 @@ module.exports = {
     });
   },
 
+  /**
+   * @param {import('sequelize').QueryInterface} queryInterface 
+   * @param {import('sequelize').Sequelize} Sequelize 
+   */
   down: async (queryInterface, Sequelize) => {
     /**
      * Add reverting commands here.
@@ -31,5 +35,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+    await queryInterface.dropTable('Categories');
   }
 };
