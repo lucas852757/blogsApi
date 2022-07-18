@@ -1,6 +1,10 @@
 'use strict';
 
 module.exports = {
+  /**
+   * @param {import('sequelize').QueryInterface} queryInterface 
+   * @param {import('sequelize').Sequelize} Sequelize 
+   */
   up: async (queryInterface, Sequelize) => {
     /**
      * Add altering commands here.
@@ -8,6 +12,16 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
+    await queryInterface.createTable('Categories', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+      },
+      name: {
+        type: Sequelize.STRING
+      }
+    });
   },
 
   down: async (queryInterface, Sequelize) => {
