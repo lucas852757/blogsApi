@@ -33,7 +33,7 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.databaseVersion
+        type: Sequelize.DATA
       },
       updatedAt: {
         allowNull: false,
