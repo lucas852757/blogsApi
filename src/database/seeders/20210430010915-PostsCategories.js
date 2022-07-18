@@ -1,4 +1,9 @@
 module.exports = {
+  /**
+   * 
+   * @param {import('sequelize').QueryInterface} queryInterface 
+   * @param {import('sequelize').Sequelize} _Sequelize 
+   */
   up: async (queryInterface, _Sequelize) => {
     await queryInterface.bulkInsert('PostCategories',
       [
@@ -14,6 +19,11 @@ module.exports = {
       ], { timestamps: false });
   },
 
+  /**
+   * 
+   * @param {import('sequelize').QueryInterface} queryInterface 
+   * @param {import('sequelize').Sequelize} _Sequelize 
+   */
   down: async (queryInterface, _Sequelize) => {
     await queryInterface.bulkDelete('PostCategories', null, {});
   },
