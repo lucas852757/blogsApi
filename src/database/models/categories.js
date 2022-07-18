@@ -36,7 +36,7 @@
 const Category = (sequelize, DataTypes) => {
   const Category = sequelize.define('Category', {
     name: DataTypes.STRING
-  }, { tableName: 'Category'})
+  }, { tableName: 'Categories'})
   return Category;
 };
 
