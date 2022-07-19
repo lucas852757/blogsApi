@@ -42,7 +42,7 @@ const BlogPost = (sequelize, DataTypes) => {
     content: {
       type: DataTypes.STRING
     }
-  }, {tableName:'BlogPosts'})
+  })
 };
 
 module.exports = BlogPost;

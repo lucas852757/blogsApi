@@ -41,7 +41,7 @@ const User = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     image: DataTypes.STRING,
-  }, {tableName: 'Users'});
+  });
 };
 
 module.exports = User;
