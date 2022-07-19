@@ -41,7 +41,19 @@ const BlogPost = (sequelize, DataTypes) => {
     },
     content: {
       type: DataTypes.STRING
-    }
+    },
+    /* createdAt: {
+      allowNull: false,
+      type: 'TIMESTAMP',
+      defaultValue: sequelize.literal(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    },
+    updatedAt: {
+      allowNull: false,
+      type: 'TIMESTAMP',
+      defaultValue: sequelize.literal(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    } */
   })
 };
 
