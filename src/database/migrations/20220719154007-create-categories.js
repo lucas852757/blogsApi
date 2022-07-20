@@ -13,39 +13,25 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-
-     await queryInterface.createTable('BlogPosts', {
+     await queryInterface.createTable('Categories', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.STRING
-      },
-      content: {
-        type: Sequelize.STRING
-      },
-      userId: {
-        references: {
-          model: 'Users',
-          key: 'id'
-        },
+      name: {
         type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
-        type: 'TIMESTAMP',
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-        field: 'publishedAt'
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: 'TIMESTAMP',
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        type: Sequelize.DATE
       }
-    });
+    })
   },
 
   /**
@@ -60,6 +46,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-     await queryInterface.dropTable('BlogPosts');
+     await queryInterface.dropTable('Categories');
   }
 };
