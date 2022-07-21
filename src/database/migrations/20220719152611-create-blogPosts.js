@@ -32,7 +32,9 @@ module.exports = {
           model: 'Users',
           key: 'id'
         },
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        onUpdate : 'CASCADE',
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
