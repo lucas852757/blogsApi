@@ -29,10 +29,10 @@ module.exports = {
       },
       userId: {
         references: {
-          model: 'Users',
-          key: 'id'
+        model: 'Users',
+        key: 'id'
         },
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         onUpdate : 'CASCADE',
         onDelete: 'CASCADE'
       },
@@ -40,12 +40,13 @@ module.exports = {
         allowNull: false,
         type: 'TIMESTAMP',
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-        field: 'publishedAt'
+        field: 'published',
       },
       updatedAt: {
         allowNull: false,
         type: 'TIMESTAMP',
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        field: 'updated',
       }
     });
   },

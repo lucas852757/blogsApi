@@ -21,26 +21,33 @@ module.exports = {
         type: Sequelize.INTEGER
       }, */
       postId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: 'BlogPosts',
-          key: 'id'
-        }
+        // references: {
+        // model: 'BlogPosts',
+        // key: 'id'
+        // },
+        // onUpdate: 'CASCADE',
+        // onDelete: 'CASCADE',
+        primaryKey: true,
       },
       categoryId: {
-        allowNull: false,
-        primaryKey: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        // references: {
+        // model: 'Categories',
+        // key: 'id'
+        // },
+        // onUpdate: 'CASCADE',
+        // onDelete: 'CASCADE',
+        primaryKey: true,
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+      // createdAt: {
+      //   allowNull: false,
+      //   type: Sequelize.DATE
+      // },
+      // updatedAt: {
+      //   allowNull: false,
+      //   type: Sequelize.DATE
+      // }
     })
   },
 
