@@ -5,7 +5,7 @@ const service = require('../services/loginService');
  * @param {import('express').Response} res 
  * @param {import('express').NextFunction} next 
  */
-const login = async (req, res, next) => {
+ module.exports = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const response = await service.login({ email, password });
@@ -14,8 +14,4 @@ const login = async (req, res, next) => {
     console.log(error);
     next(error);
   }
-};
-
-module.exports = {
-  login,
 };

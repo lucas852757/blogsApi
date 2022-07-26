@@ -1,7 +1,8 @@
+/** source: https://github.com/tryber/nodejs-jwt-base-project */
 require('dotenv').config();
 const app = require('./api');
 //
-const controller = require('./controllers/loginController');
+const routes = require('./routes');
 const error = require('./middlewares/errorMiddlewares');
 
 // não remova a variável `API_PORT` ou o `listen`
@@ -12,7 +13,8 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.post('/login', controller.login);
+app.post('/login', routes.login);
+app.post('/user', routes.user);
 
 app.use(error);
 app.listen(port, () => console.log('ouvindo porta', port));
