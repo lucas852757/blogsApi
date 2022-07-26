@@ -3,6 +3,7 @@ const errors = {
   ValidationError: 400,
   NotFoundError: 400,
   AlreadyRegisteredError: 409,
+  DoesNotExistError: 404,
 };
 
 // Aula 241
