@@ -1,4 +1,4 @@
-const userService = require('../services/userService');
+const userService = require('../services/userPostService');
 
 /** @type {import('express').RequestHandler} */
 module.exports = async (req, res, next) => {

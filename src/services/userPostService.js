@@ -21,7 +21,7 @@ const user = async ({ displayName, email, password, image }) => {
 
      const insertUser = await model.User.create({ displayName, email, password, image });
      const secret = process.env.JWT_SECRET;
-  
+     
    const token = jwt.sign({ data: insertUser.dataValues }, secret);
   return { token };
 }; 
