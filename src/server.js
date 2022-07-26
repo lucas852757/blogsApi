@@ -16,6 +16,7 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
+app.get('/user/:id', validator, routes.userIdGet);
 app.get('/user', validator, routes.userGet);
 app.post('/login', routes.login);
 app.post('/user', routes.userPost);
