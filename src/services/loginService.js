@@ -7,9 +7,10 @@ const jwt = require('jsonwebtoken');
 const models = require('../database/models');
 
 const login = async ({ email, password }) => {
+  // Atera mensagens padrões do Joi
   const schema = Joi.object({ 
-    email: Joi.string().not().empty().required()
-    // Atera mensagens padrões do Joi
+    email: Joi.string().not().empty().email()
+    .required()
 .messages({ 'string.empty': 'Some required fields are missing' }),
      password: Joi.string().not().empty().required()
      .messages({ 'string.empty': 'Some required fields are missing' }) });

@@ -24,20 +24,22 @@ const BlogPost = (sequelize, DataTypes) => {
     },
     published: {
       allowNull: false,
-      type: 'TIMESTAMP',
+      type: DataTypes.DATE
       // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
     updated: {
       allowNull: false,
-      type: 'TIMESTAMP',
+      type: DataTypes.DATE,
       // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     }
   },
   {
+    createdAt: 'published',
+    updatedAt: 'updated',
     tableName: 'BlogPosts'
   })
 
-  BlogPost.associate = (models ) => {BlogPost.belongsTo(models.User, {foreignKey: 'id', as: 'users'})}
+  BlogPost.associate = (models ) => {BlogPost.belongsTo(models.User, {foreignKey: 'userId', as: 'users'})}
 
   return BlogPost;
 };

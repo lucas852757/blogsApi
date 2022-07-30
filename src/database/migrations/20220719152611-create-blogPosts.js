@@ -34,7 +34,7 @@ module.exports = {
         },
         type: Sequelize.INTEGER,
         onUpdate : 'CASCADE',
-        onDelete: 'CASCADE'
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,

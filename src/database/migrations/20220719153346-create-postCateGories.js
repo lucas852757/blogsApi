@@ -1,3 +1,4 @@
+/**source: https://app.betrybe.com/course/live-lectures/sd-cohort-19-b#aula-242-orm-associations */
 'use strict';
 
 module.exports = {
@@ -22,6 +23,7 @@ module.exports = {
       }, */
       postId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         // references: {
         // model: 'BlogPosts',
         // key: 'id'
@@ -32,6 +34,7 @@ module.exports = {
       },
       categoryId: {
         type: Sequelize.INTEGER,
+        allowNull:false,
         // references: {
         // model: 'Categories',
         // key: 'id'
