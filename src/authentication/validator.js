@@ -1,9 +1,12 @@
 /** source: https://app.betrybe.com/course/back-end/nodejs-orm-autenticacao/jwt-json-web-token/acf1c24f-d531-4cf0-be9b-2384e37799d7/conteudos/d22aa12a-a9fd-448f-865a-ec8de7f521e6/implementando-jwt/b81401e2-ade1-4d90-94b9-e6d971915d36?use_case=side_bar */
 
+/** source: https://app.betrybe.com/course/back-end/nodejs-orm-autenticacao/jwt-json-web-token/acf1c24f-d531-4cf0-be9b-2384e37799d7/conteudos/d22aa12a-a9fd-448f-865a-ec8de7f521e6/implementando-jwt/b81401e2-ade1-4d90-94b9-e6d971915d36?use_case=previous_button */
+
 /** source : https://app.betrybe.com/course/live-lectures/sd-cohort-19-b#aula-243-jwt-json-web-token */
 
 const jwt = require('jsonwebtoken');
-// const model = require('../database/models');
+const model = require('../database/models');
+
 const secret = process.env.JWT_SECRET;
 /**
  * 
@@ -19,7 +22,11 @@ module.exports = async (req, res, next) => {
     }
 
     try {
-      jwt.verify(token, secret);
+      const decoded = jwt.verify(token, secret);
+      const { email } = decoded.data;
+      const response = await model.User.findOne({ where: { email } });
+      const { id } = response.toJSON();
+      req.id = id;
       next();
     } catch (error) {
       console.log(error);
