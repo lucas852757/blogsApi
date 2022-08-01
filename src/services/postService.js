@@ -4,7 +4,6 @@
 
 const Joi = require('joi');
 const model = require('../database/models');
-const findCategoriesId = require('../utils/findCategoriesId');
 
 // eslint-disable-next-line max-lines-per-function
 const post = async ({ title, content, categoryIds, id }) => {
@@ -18,27 +17,27 @@ const post = async ({ title, content, categoryIds, id }) => {
   'array.min': '"categoryIds" not found' }) });
 
   await schema.validateAsync({ title, content, categoryIds });
-  console.log('-->', id);
-// terminar hoje
-const response = await model.Category.findAll({ where: { id: categoryIds } }); 
+const findAllCategories = await model.Category.findAll({ where: { id: categoryIds } }); 
 
-if (response.length !== categoryIds.length) {
+if (findAllCategories.length !== categoryIds.length) {
   const error = new Error('"categoryIds" not found');
   error.name = 'CategoryIdsNotFoundError';
   throw error;
 }
 
-// console.log('-->', await findCategoriesId(categoryIds));
+const insertBlogPost = await model.BlogPost
+ .create({ title, content, userId: id });
+const { id: idBlogPost } = insertBlogPost.toJSON();
 
-// const insertBlogPost = await model.BlogPost
-// .create({ title, content, userId: id }/* , { include: { model: model.PostCategory } } */);
-// const { id: idBlogPost } = insertBlogPost.toJSON();
+categoryIds.map(async (categoryId) => {
+  const findId = await model.Category.findByPk(categoryId);
+  const { id: idCategory } = findId.toJSON();
+  await model.PostCategory.bulkCreate([{ postId: idBlogPost, categoryId: idCategory }]);
+});
 
-/* const Category = await model.Category.findAll();
-console.log(Category);
 const response = await model.BlogPost
 .findOne({ where: { id: idBlogPost } });
-return response; */
+return response;
 };
  
 module.exports = {
