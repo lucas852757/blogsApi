@@ -16,6 +16,7 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
+app.get('/post', validator, routes.getPost);
 app.get('/categories', validator, routes.categoryGet);
 app.get('/user/:id', validator, routes.userIdGet);
 app.get('/user', validator, routes.userGet);
