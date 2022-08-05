@@ -4,10 +4,10 @@ const model = require('../database/models');
 const getPost = async () => {
   const response = await model.BlogPost.findAll({
     include: [
-      { model: model.User, as: 'users', attributes: { exclude: ['password'] } },
+      { model: model.User, as: 'user', attributes: { exclude: ['password'] } },
       { model: model.Category,
 as: 'categories',
-        attributes: { exclude: ['PostCategory'] } },
+        through: { attributes: [] } },
     ],
   });
   return response;
