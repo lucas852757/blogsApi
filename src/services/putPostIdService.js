@@ -5,9 +5,9 @@ const model = require('../database/models');
 const putPostId = async (id, userId, { title, content }) => {
   const schema = Joi.object({ title: Joi.string().not()
     .empty().required()
-    .messages({ 'any.required': 'Some required fields are missing' }),
+    .messages({ 'string.empty': 'Some required fields are missing' }),
 content: Joi.string().not().empty().required()
-.messages({ 'any.required': 'Some required fields are missing' }) });
+.messages({ 'string.empty': 'Some required fields are missing' }) });
 
 await schema.validateAsync({ title, content });
 
