@@ -1,4 +1,4 @@
-const service = require('../services/getPostId')
+const service = require('../services/getPostIdService');
 /**
  * 
  * @param {import('express').Request} req 
