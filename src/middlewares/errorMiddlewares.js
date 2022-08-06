@@ -5,6 +5,7 @@ const errors = {
   AlreadyRegisteredError: 409,
   DoesNotExistError: 404,
   CategoryIdsNotFoundError: 400,
+  UnauthorizedUserError: 401,
 };
 
 // Aula 241
