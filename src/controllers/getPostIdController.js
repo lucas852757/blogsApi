@@ -14,5 +14,4 @@ module.exports = async (req, res, next) => {
     next(error);
     console.log(error);
   }
-
 };
