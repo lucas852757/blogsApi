@@ -1,4 +1,4 @@
-const service = require('../services/putPostId');
+const service = require('../services/putPostIdService');
 /**
  * 
  * @param {import('express').Request} req 
@@ -8,8 +8,9 @@ const service = require('../services/putPostId');
 module.exports = async (req, res, next) => {
   try {
     const { id } = req.params;
+    const { id: userId } = req.id;
     const { title, content } = req.body;
-    const response = service.putPostId(id, { title, content });
+    const response = service.putPostId(id, userId, { title, content });
     return res.status(200).json(response);
   } catch (error) {
     next(error);
