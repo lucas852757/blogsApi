@@ -13,7 +13,7 @@ await schema.validateAsync({ title, content });
 
   if (id !== userId) {
     const error = new Error('Unauthorized user');
-    error.name = 'unauthorizedUserError';
+    error.name = 'UnauthorizedUserError';
     throw error;
   }
   await model.BlogPost.update({ title, content }, { where: { id } });
