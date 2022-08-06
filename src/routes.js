@@ -8,6 +8,7 @@ const categoryGet = require('./controllers/categoriesGetController');
 const post = require('./controllers/postController');
 const getPost = require('./controllers/getPostController');
 const getPostId = require('./controllers/getPostIdController');
+const putPostId = require('./controllers/putPostIdController');
 
 module.exports = {
   login,
@@ -19,4 +20,5 @@ module.exports = {
   post,
   getPost,
   getPostId,
+  putPostId,
 };
