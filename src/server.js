@@ -16,7 +16,7 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.put('/put/:id', validator, routes.putPostId);
+app.put('/post/:id', validator, routes.putPostId);
 
 app.get('/post/:id', validator, routes.getPostId);
 app.get('/post', validator, routes.getPost);

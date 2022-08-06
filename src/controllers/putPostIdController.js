@@ -8,12 +8,13 @@ const service = require('../services/putPostIdService');
 module.exports = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { id: userId } = req.id;
+    const { id: userId } = req;
     const { title, content } = req.body;
-    const response = service.putPostId(id, userId, { title, content });
+  
+    const response = await service.putPostId(id, userId, { title, content });
     return res.status(200).json(response);
   } catch (error) {
-    next(error);
     console.log(error);
+    next(error);
   }
 };
