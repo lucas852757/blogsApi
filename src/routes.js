@@ -10,6 +10,7 @@ const getPost = require('./controllers/getPostController');
 const getPostId = require('./controllers/getPostIdController');
 const putPostId = require('./controllers/putPostIdController');
 const deletePostId = require('./controllers/deletePostIdController');
+const deleteMe = require('./controllers/deleteMeController');
 
 module.exports = {
   login,
@@ -23,4 +24,5 @@ module.exports = {
   getPostId,
   putPostId,
   deletePostId,
+  deleteMe,
 };
