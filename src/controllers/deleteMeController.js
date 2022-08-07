@@ -1,4 +1,4 @@
-const service = require('../services/');
+const service = require('../services/deleteMeService');
 /**
  * 
  * @param {import('express').Request} req 
@@ -9,6 +9,7 @@ module.exports = async (req, res, next) => {
   try {
     const { id } = req;
     await service.deleteMe(id);
+    return res.status(204).end();
   } catch (error) {
     next(error);
     console.log(error);
