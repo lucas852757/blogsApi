@@ -16,6 +16,8 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
+app.delete('/post/:id', validator, routes.deletePostId);
+
 app.put('/post/:id', validator, routes.putPostId);
 
 app.get('/post/:id', validator, routes.getPostId);
