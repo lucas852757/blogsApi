@@ -28,3 +28,5 @@ cd BlogsApi
 ```Bash
 npm install
 ```
+## Como executar o projeto com o Docker
+Tenha o Docker instalado em sua máquina! Para baixá-lo acesse o link <a href="https://www.docker.com/">aqui</a>
