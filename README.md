@@ -16,6 +16,15 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 - sequelize
 
 ## Como baixar o projeto
-
+1. Clone o repositório
 ```Bash
+ git clone git@github.com:lucas852757/blogsApi.git
+```
+2. Entre na pasta do repositóirio que você acabou de clonar:
+```Bash
+cd BlogsApi
+```
+3. Instale as dependências [Caso existam]
+```Bash
+npm install
 ```
