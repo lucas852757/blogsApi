@@ -26,5 +26,5 @@ module.exports = {
   putPostId,
   deletePostId,
   deleteMe,
-  getPostSearch
+  getPostSearch,
 };
