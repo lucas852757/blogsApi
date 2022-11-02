@@ -39,16 +39,60 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
 ---
 # Testando a aplicação
 ## 1 - Acesse o endpoint Get `/login`
+- O endpoint está acessível atrvés da URL `/login`
+- O corpo da requisição deverá ter o seguinte formato:
+```json
+  {
+    "email": "lewishamilton@gmail.com",
+    "password": "123456"
+  }
+  ```
+  <details>
+    <summary><strong>Os seguinte pontos são cobertos</strong></summary>
+  
+   - Se o requisição não contém todos os dados preenchidos(não pose haver campos em branco), o resultado será como mostrado abaixo, com status `http 400`:
+   ```json
+    {
+      "message": "Some required fields are missing"
+    }
+   ```
+  - Se a requisicão receber um par de `email` e `password` errados/inválidos, o resultado será como mostrado abaixo, com status `http400`:
+  ```json
+    {
+      "message": "Invalid fields"
+    }
+  ```
+  - Se o login foi realizado com sucesso, o resultado retornado deverá ser como mostrado abaixo, com status `http 200`:
+  ```json
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJkaXNwbGF5TmFtZSI6Ikxld2lzIEhhbWlsdG9uIiwiZW1haWwiOiJsZXdpc2hhbWlsdG9uQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTIzNDU2IiwiaW1hZ2UiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9jb21tb25zLzEvMTgvTGV3aXNfSGFtaWx0b25fMjAxNl9NYWxheXNpYV8yLmpwZyJ9LCJpYXQiOjE2Njc0MzIzNzh9.OcDCr7vq3CeWOvk6WpePTFaa7jacQqZvvuv17-CExAY"
+    }
+  ```
+  </details>
+
+
 ## 2 - Acesse o endpoint Post `/user`
+- O endpoint está acessível atrvés da URL `/user`
 ## 3 - Acesse o endpoint Get `/user`
-## 4 - Acesse o endpoint Get `/use/:id`
+- O endpoint está acessível atrvés da URL `/login`
+## 4 - Acesse o endpoint Get `/user/:id`
+- O endpoint está acessível atrvés da URL `/user/:id`
 ## 5 - Acesse o endpoint Post `/categories`
+- O endpoint está acessível atrvés da URL `/categories`
 ## 6 - Acesse o endpoint Get `/categories`
+- O endpoint está acessível atrvés da URL `/categories`
 ## 7 - Acesse o endpoint Post `/post`
+- O endpoint está acessível atrvés da URL `/post`
 ## 8 - Acesse o endpoint Get `/post`
+- O endpoint está acessível atrvés da URL `/post`
 ## 9 - Acesse o endpoint Get `/post/:id`
+- O endpoint está acessível atrvés da URL `/post:id`
 ## 10 - Acesse o endpoint Put `post/:id`
+- O endpoint está acessível atrvés da URL `/post/id`
 ## 11 - Acesse o endpoint Delete `post/:id`
+- O endpoint está acessível atrvés da URL `/post/:id`
 ## 11 - Acesse o endpoint Delete `user/me`
+- O endpoint está acessível atrvés da URL `/user/me`
 ## 12 - Acesse o endpoint Get `/post/search?q=:serachTerm`
+- O endpoint está acessível atrvés da URL `/post/serach`
 
