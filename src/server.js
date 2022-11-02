@@ -21,6 +21,7 @@ app.delete('/post/:id', validator, routes.deletePostId);
 
 app.put('/post/:id', validator, routes.putPostId);
 
+app.get('/post/search', validator, routes.getPostSearch);
 app.get('/post/:id', validator, routes.getPostId);
 app.get('/post', validator, routes.getPost);
 app.get('/categories', validator, routes.categoryGet);
