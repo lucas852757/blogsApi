@@ -38,7 +38,7 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
 - Esses servicos irão inicializar um container `blogs_api` e outro chamado `blogs_api_db`;
 ---
 # Testando a aplicação
-## 1 - Acesse o endpoint Post `/login`
+## 1 - Acesse o endpoint Get `/login`
 - O endpoint está acessível atrvés da URL `/login`
 - O corpo da requisição deverá ter o seguinte formato:
 ```json
@@ -56,7 +56,7 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
       "message": "Some required fields are missing"
     }
    ```
-  - Se a requisicão receber um par de `email` e `password` errados/inválidos, o resultado será como mostrado abaixo, com status `http 400`:
+  - Se a requisicão receber um par de `email` e `password` errados/inválidos, o resultado será como mostrado abaixo, com status `http400`:
   ```json
     {
       "message": "Invalid fields"
@@ -70,9 +70,65 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
   ```
   </details>
 
+  ---
 
 ## 2 - Acesse o endpoint Post `/user`
 - O endpoint está acessível atrvés da URL `/user`
+- O endpoint adiciona um novo `user` a sua tabela no banco de dados.
+- A requisição deve seguir o seguinte formato abaixo:
+```Bash
+{
+    "displayName": "Brett Wiltshire",
+    "email": "brett@email.com",
+    "password": "123456",
+    "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
+  }
+```
+<details>
+  <summary>
+    Os seguintes pontos são cobertos:
+  </summary>
+
+  - Se a requisição não tiver o campo `displayName` devidamente preenchido com 8 ou mais caracteres, o resultadod retornado será exibido conforme abaixo, com status `http 400`:
+
+  ```json
+    {
+      "message": "\"displayName\" length must be at least 8 characters long"
+    }
+  ```
+  - Se a requisição não tiver o campo `email` devidamente preenchido com o formato `<prefixo@sufixo>`, o resultado retornado será exibido conforme abaixo, com status `http 400`:
+
+  ```json
+    {
+      "message": "\"email\" must be a valid email"
+    }
+  ```
+- Se a requisição não tiver o campo `password`devidamente preenchido com 6 o mais caracteres, o resultado retornado será exibido conforme abaixo, com status `http 400`:
+
+```json
+    {
+      "message": "\"password\" length must be at least 6 characters long"
+    }
+```
+- Se a requisição enviar enviar um campo `email` com um email já existente, o resultado retornado será exibido conforme abaixo, com status `http 409`:
+
+```json
+    {
+      "message": "User already registered"
+    }
+```
+
+- Se o user for criado com sucesso, o resultado retornado será exibido conforme abaixo, com status `http 201`:
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozLCJkaXNwbGF5TmFtZSI6IkJyZXR0IFdpbHRzaGlyZSIsImVtYWlsIjoiYnJldHRAZW1haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJpbWFnZSI6Imh0dHA6Ly80LmJwLmJsb2dzcG90LmNvbS9fWUE1MGFkUS03dlEvUzFnZlJfNnVmcEkvQUFBQUFBQUFBQWsvMUVySkdnUldaRGcvUzQ1L2JyZXR0LnBuZyJ9LCJpYXQiOjE2Njc0MzczOTF9.0uD0KDs7iaE-1xrnDQ5HshWBfiyEC3qWdhfPMMUI2WY"
+}
+```
+</details>
+
+---
+
 ## 3 - Acesse o endpoint Get `/user`
 - O endpoint está acessível atrvés da URL `/login`
 ## 4 - Acesse o endpoint Get `/user/:id`
@@ -95,4 +151,5 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
 - O endpoint está acessível atrvés da URL `/user/me`
 ## 12 - Acesse o endpoint Get `/post/search?q=:serachTerm`
 - O endpoint está acessível atrvés da URL `/post/serach`
+
 
