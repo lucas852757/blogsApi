@@ -38,7 +38,7 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
 - Esses servicos irão inicializar um container `blogs_api` e outro chamado `blogs_api_db`;
 ---
 # Testando a aplicação
-## 1 - Acesse o endpoint Get `/login`
+## 1 - Acesse o endpoint Post `/login`
 - O endpoint está acessível atrvés da URL `/login`
 - O corpo da requisição deverá ter o seguinte formato:
 ```json
@@ -56,7 +56,7 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
       "message": "Some required fields are missing"
     }
    ```
-  - Se a requisicão receber um par de `email` e `password` errados/inválidos, o resultado será como mostrado abaixo, com status `http400`:
+  - Se a requisicão receber um par de `email` e `password` errados/inválidos, o resultado será como mostrado abaixo, com status `http 400`:
   ```json
     {
       "message": "Invalid fields"
