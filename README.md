@@ -321,11 +321,50 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
 - O endpoint está acessível atrvés da URL `/post:id`
 ## 10 - Acesse o endpoint Put `post/:id`
 - O endpoint está acessível atrvés da URL `/post/id`
+- O endpoint tráz o blog post do `id` se ele existir na tabela do banco de dados
+
+<details>
+  <summary>
+    Os seguintes pontos são cobertos
+  </summary>
+
+  - Se o retorno for realizado com sucesso, o resultado retornado será exibido como abaixo, com status `http 200`:
+  ```json
+  {
+    "id": 1,
+    "title": "Post do Ano",
+    "content": "Melhor post do ano",
+    "userId": 1,
+    "published": "2011-08-01T19:58:00.000Z",
+    "updated": "2011-08-01T19:58:51.000Z",
+    "user": {
+      "id": 1,
+      "displayName": "Lewis Hamilton",
+      "email": "lewishamilton@gmail.com",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+    },
+    "categories": [
+      {
+        "id": 1,
+        "name": "Inovação"
+      }
+    ]
+  }
+  ```
+  - Se o id não existir no banco de dados, o resultado retornado será exibido como abaixo, com status `http 404`:
+  ```json
+  {
+    "message": "Post does not exist"
+  }
+  ```
+
+</details>
+
 ## 11 - Acesse o endpoint Delete `post/:id`
 - O endpoint está acessível atrvés da URL `/post/:id`
 ## 11 - Acesse o endpoint Delete `user/me`
 - O endpoint está acessível atrvés da URL `/user/me`
 ## 12 - Acesse o endpoint Get `/post/search?q=:serachTerm`
 - O endpoint está acessível atrvés da URL `/post/serach`
-m`
-- O endpoint está acessível atrvés da URL `/post/serach`
+
+
