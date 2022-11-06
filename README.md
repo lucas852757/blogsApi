@@ -1,7 +1,7 @@
 <h1> BlogsApi </h1>
 
 # Sobre
-O projeto **BlogsApi** é um projeto que envolve os conhecimento sobre ORM E JWT. Nesse projeto, foi desenvolvido uma api para blogs seguindo os princípios do REST
+O projeto **BlogsApi** é um projeto que envolve os conhecimento sobre ORM E JWT, adquiridos n **Trybe**. Nesse projeto, foi desenvolvido uma api para blogs seguindo os princípios do REST
 , utilizando o Sequelize como um ORM e autenticação em JWT.
 
 ## Tecnologias utilizadas
@@ -37,6 +37,13 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
 
 - Esses servicos irão inicializar um container `blogs_api` e outro chamado `blogs_api_db`;
 ---
+## Como executar o projeto sem o Docker
+- Instale as dependências [Caso existam]
+```Bash
+npm install
+```
+- Para testar o projeto, tenha o **node** instalado em seu computador
+
 # Testando a aplicação
 ## 1 - Acesse o endpoint Get `/login`
 - O endpoint está acessível atrvés da URL `/login`
@@ -362,9 +369,160 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
 
 ## 11 - Acesse o endpoint Delete `post/:id`
 - O endpoint está acessível atrvés da URL `/post/:id`
-## 11 - Acesse o endpoint Delete `user/me`
+- O endpoint deleta o blog post realicinado ao `id` do user
+- O user que não é dono do post não consegue deletá-lo
+
+<details>
+  <summary>
+    Os seguintes pontos são cobertos
+  </summary>
+
+  - Se o user não for o dono do post, o resultdado retornado será como exibido abaixo, com status `http 401`:
+  ```json
+  {
+    "message": "Unauthorized user"
+  }
+  ```
+  - Se o user for o dono do post, não será retornado nenhum resultado como resposta, apenas o status `http 204`
+
+  - Se o post não existe, o resultado retornao será como exibido abaixo, com status `http 401`:
+  ```json
+  {
+    "message":"Post does not exist"
+  }
+  ```
+</details>
+
+## 12 - Acesse o endpoint Delete `user/me`
 - O endpoint está acessível atrvés da URL `/user/me`
+- O endpoint deleata voçẽ do banco de dados
+<details>
+  <summary>
+    Os seguintes pontos são cobertos
+  </summary>
+
+  - Se o user for deletado, não será retornado nenhum resultado, apenas o status `http 204`
+</details>
+
 ## 12 - Acesse o endpoint Get `/post/search?q=:serachTerm`
 - O endpoint está acessível atrvés da URL `/post/serach`
+- O endpoint tráz um array de posts de acordo com o termo de pesquisa
+- O endpoint tráz um array de posts contendo np título ou no conteúdo o termo de pesquisa
+- O endpoint tráz um array vazio, se nenhum post satisfaz a sua pesquisa
+- Query para para a requisição:
+```js
+http://localhos:port/post/search?q=termoDeBusca
+```
+<details>
+  <summary>
+    Os seguintes pontos são cobertos
+  </summary>
 
+  - Se a requisição for feita pelo título, o resultado retornado será como exibido abaixo, com status `http 200`:
 
+  ```json
+  // Get post/search?q=vamos
+  [
+  {
+    "id": 2,
+    "title": "Vamos que vamos",
+    "content": "Foguete não tem ré",
+    "userId": 1,
+    "published": "2011-08-01T19:58:00.000Z",
+    "updated": "2011-08-01T19:58:51.000Z",
+    "user": {
+      "id": 1,
+      "displayName": "Lewis Hamilton",
+      "email": "lewishamilton@gmail.com",
+      "password": "123456",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+    },
+    "categories": [
+      {
+        "id": 2,
+        "name": "Escola"
+      }
+    ]
+  }
+  ]
+  ```
+- Se a requisição for feita pelo conteúdo, o resultado retornado será como exibido abaixo, com status `http 200`:
+```json
+  // Get post/search?q=Foguete não tem ré
+[
+  {
+    "id": 2,
+    "title": "Vamos que vamos",
+    "content": "Foguete não tem ré",
+    "userId": 1,
+    "published": "2011-08-01T19:58:00.000Z",
+    "updated": "2011-08-01T19:58:51.000Z",
+    "user": {
+      "id": 1,
+      "displayName": "Lewis Hamilton",
+      "email": "lewishamilton@gmail.com",
+      "password": "123456",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+    },
+    "categories": [
+      {
+        "id": 2,
+        "name": "Escola"
+      }
+    ]
+  }
+]
+```
+- Se a busca for vazia, o resultado retornado será como exibido abaixo, contendo todos os blog post, com status `http 200`:
+```json
+[
+  {
+    "id": 1,
+    "title": "Post do Ano",
+    "content": "Melhor post do ano",
+    "userId": 1,
+    "published": "2011-08-01T19:58:00.000Z",
+    "updated": "2011-08-01T19:58:51.000Z",
+    "user": {
+      "id": 1,
+      "displayName": "Lewis Hamilton",
+      "email": "lewishamilton@gmail.com",
+      "password": "123456",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+    },
+    "categories": [
+      {
+        "id": 1,
+        "name": "Inovação"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Vamos que vamos",
+    "content": "Foguete não tem ré",
+    "userId": 1,
+    "published": "2011-08-01T19:58:00.000Z",
+    "updated": "2011-08-01T19:58:51.000Z",
+    "user": {
+      "id": 1,
+      "displayName": "Lewis Hamilton",
+      "email": "lewishamilton@gmail.com",
+      "password": "123456",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+    },
+    "categories": [
+      {
+        "id": 2,
+        "name": "Escola"
+      }
+    ]
+  }
+]
+```
+- Se a busca conter um termo que não existe nos posts, o resultado retornado será como exibido abaixo, com status `http 200`:
+```json
+ // Get post/search?q=linux
+ []
+```
+</details>
