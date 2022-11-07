@@ -1,7 +1,7 @@
 <h1> BlogsApi </h1>
 
 # Sobre
-O projeto **BlogsApi** é um projeto que envolve os conhecimento sobre ORM E JWT, adquiridos na **Trybe**. Nesse projeto, foi desenvolvido uma api para blogs seguindo os princípios do REST
+O projeto **BlogsApi** é um projeto que envolve os conhecimentos sobre ORM E JWT, adquiridos na **Trybe**. Nesse projeto, foi desenvolvido uma api para blogs seguindo os princípios do REST
 , utilizando o Sequelize como um ORM e autenticação em JWT.
 
 ## Tecnologias utilizadas
