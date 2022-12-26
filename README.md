@@ -33,7 +33,7 @@ Antes de começar, seu docker-compose precisa estar na versção 1.29 ou superio
 
 >: information_source: Rode os serviços `node` e `db` como o comando: `docker-compose up -d --build`.
 
-- Lembre-se de para o `mysql` se vocês estiver usando localmente na porta `3306`, ou adapte, caso queira fzer uso da aplicação em containers;
+- Lembre-se de parar o `mysql` se vocês estiver usando localmente na porta `3306`, ou adapte, caso queira fazer uso da aplicação em containers;
 
 - Esses servicos irão inicializar um container `blogs_api` e outro chamado `blogs_api_db`;
 ---
